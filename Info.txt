@@ -1,0 +1,61 @@
+Restaurant Project
+
+*No root password to MySQL
+Database Name: restaurant
+Username: restaurantAdmin
+Password: resadmin123
+Host: localhost:8080
+
+Database Query
+
+CREATE TABLE employee(
+id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+first_name VARCHAR(50) NOT NULL,
+fathers_name VARCHAR(50) NOT NULL,
+grand_fathers_name VARCHAR(50) NOT NULL,
+position VARCHAR(50) NOT NULL
+);
+
+ CREATE TABLE schedule(
+     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+     work_title VARCHAR(30) NOT NULL,
+     day VARCHAR(15) NOT NULL,
+     time DATETIME NOT NULL,
+     duration VARCHAR(20) NOT NULL,
+     product VARCHAR(30) NOT NULL,
+     portion INT NOT NULL,
+     category VARCHAR(30) NOT NULL,
+     instructions TEXT NOT NULL,
+     equipments TEXT NOT NULL,
+     ingredients TEXT NOT NULL,
+     employee_id INT NOT NULL,
+     INDEX (employee_id)
+);
+
+//FORIEGN KEY fk_emp (employee_id) REFERENCES employee(id) 
+
+/*Syntax for foriegn keys
+[CONSTRAINT [symbol]] FOREIGN KEY
+    [index_name] (col_name, ...)
+    REFERENCES tbl_name (col_name,...)
+    [ON DELETE reference_option]
+    [ON UPDATE reference_option]
+
+reference_option:
+    RESTRICT | CASCADE | SET NULL | NO ACTION | SET DEFAULT
+
+Example:
+CREATE TABLE parent (
+    id INT NOT NULL,
+    PRIMARY KEY (id)
+) ENGINE=INNODB;
+
+CREATE TABLE child (
+    id INT,
+    parent_id INT,
+    INDEX par_ind (parent_id),
+    FOREIGN KEY (parent_id)
+        REFERENCES parent(id)
+        ON DELETE CASCADE
+) ENGINE=INNODB;
+*/
